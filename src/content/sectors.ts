@@ -1,0 +1,11 @@
+import { photos } from "./images";
+export const sectors = [
+  { id: "health", title: "Public health & wellbeing", image: photos.rural, description: "Explore how people navigate care, understand information, and experience the services around them.", question: "What practical and social barriers shape the decision to seek care?" },
+  { id: "education", title: "Education & skills", image: photos.city, description: "Understand learning experiences, aspirations, and the transition from education into work.", question: "How do young people weigh training options against the realities of earning a living?" },
+  { id: "agriculture", title: "Agriculture & rural livelihoods", image: photos.farming, description: "Look at the relationships between producers, markets, seasonal work, and household choices.", question: "Where do producers encounter uncertainty along a local value chain?" },
+  { id: "inclusion", title: "Gender & social inclusion", image: photos.women, description: "Examine whose voices are heard, who can access opportunities, and how barriers differ between groups.", question: "How do time, mobility, safety, and accessibility influence participation?" },
+  { id: "finance", title: "Financial inclusion & digital services", image: photos.market, description: "Explore trust, usability, financial choices, and the experience of adopting a digital service.", question: "What helps people feel confident enough to use a service independently?" },
+  { id: "climate", title: "Climate resilience & environment", image: photos.paddy, description: "Understand how changing conditions interact with livelihoods, local priorities, and adaptation choices.", question: "Which adaptation options feel practical within people's existing responsibilities?" },
+  { id: "retail", title: "Consumer goods, retail & SMEs", image: photos.boats, description: "Study everyday exchange through the perspectives of consumers, retailers, and smaller enterprises.", question: "Which unmet needs could a different product, channel, or service address?" },
+  { id: "cities", title: "Cities, mobility & urban livelihoods", image: photos.hero, description: "Look at how work, movement, public space, and services connect across urban daily life.", question: "How does the journey to work affect access to income and essential services?" },
+];
