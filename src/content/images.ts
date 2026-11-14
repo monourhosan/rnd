@@ -1,4 +1,5 @@
 export const photos = {
+  closing: { src: "/images/bangladesh-fields-aerial.webp", alt: "Aerial view of green fields, tree-lined ponds, and a train in Bangladesh" },
   hero: { src: "/images/dhaka-river-market.webp", alt: "Wooden boats moored along a busy riverbank with people and market buildings" },
   market: { src: "/images/dhaka-street-market.webp", alt: "A street stall surrounded by people moving through the market" },
   rural: { src: "/images/chandpur-landscape.webp", alt: "A narrow path and waterway running between green fields and trees" },

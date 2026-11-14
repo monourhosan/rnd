@@ -13,7 +13,12 @@ export function ImageHero({ title, photo, eyebrow, description, home = false }: 
 export function PageIntro({ eyebrow, title, text, image }: { eyebrow?: string; title: React.ReactNode; text?: string; image?: Photo }) { return image ? <><ImageHero title={title} photo={image} eyebrow={eyebrow} />{text && <div className="intro-summary container"><p>{text}</p></div>}</> : <section className="page-intro container">{eyebrow && <div className="eyebrow"><span className="tiny-square" />{eyebrow}</div>}<h1>{title}</h1>{text && <p>{text}</p>}</section>; }
 export function SectionHeading({ eyebrow, title, text, href, link }: { eyebrow: string; title: React.ReactNode; text?: string; href?: string; link?: string }) { return <div className="section-heading"><div><p className="eyebrow">{eyebrow}</p><h2>{title}</h2>{text && <p className="section-description">{text}</p>}</div>{href && <TextLink href={href}>{link}</TextLink>}</div>; }
 export function InsightCard({ article }: { article: (typeof insights)[number] }) { return <article className="insight-card"><Link href={`/insights/${article.slug}`} className="card-image-link" aria-label={`Read ${article.title}`}><PhotoBlock photo={article.image} /></Link><div className="card-meta"><span>{article.category}</span><span>{readingTime(article)}</span></div><h3><Link href={`/insights/${article.slug}`}>{article.title}<Arrow /></Link></h3></article>; }
-export function CallToAction() { return <section className="closing container"><PhotoBlock photo={photos.hero} sizes="(max-width: 767px) 100vw, 480px" /><div><h2>Better decisions start with evidence.</h2><TextLink href="/contact">Discuss your project</TextLink></div></section>; }
+export function CallToAction() {
+  return <section className="closing closing-background">
+    <div className="closing-background-image" aria-hidden="true"><Image src={photos.closing.src} alt="" fill sizes="100vw" /></div>
+    <div className="closing-content container"><h2>Better decisions start with evidence.</h2><TextLink href="/contact">Discuss your project</TextLink></div>
+  </section>;
+}
 export const steps = [
   { title: "Understand", full: "Understand", text: "Define the question and decision." },
   { title: "Design", full: "Design", text: "Choose methods that fit." },

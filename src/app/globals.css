@@ -84,4 +84,12 @@
   .closing h2{font-size:30px}
   .footer-top{grid-template-columns:1fr 1fr}
 }
+.closing.closing-background{position:relative;isolation:isolate;overflow:hidden;display:flex;align-items:center;min-height:440px;padding-block:100px;gap:0;background:var(--navy)}
+.closing-background-image{position:absolute;inset:-36px;z-index:-2;pointer-events:none}
+.closing-background-image img{object-fit:cover;object-position:center 52%}
+.closing-background::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgb(8 31 43 / 84%),rgb(8 31 43 / 55%) 60%,rgb(8 31 43 / 28%))}
+.closing-background h2{color:white;font-size:clamp(36px,4vw,54px);line-height:1.15;letter-spacing:-.02em;max-width:620px;margin-bottom:30px}
+.closing-background .text-link{color:white;border-bottom:1px solid #a7c6c5;margin:0;gap:32px}
+.closing-background .text-link:hover{color:#bcf0e9}
+@media(max-width:767px){.closing.closing-background{min-height:360px;padding-block:70px}.closing-background h2{font-size:36px;max-width:340px}.closing-background-image img{object-position:65% center}.closing-background::after{background:rgb(8 31 43 / 66%)}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation:none!important;transition:none!important}}

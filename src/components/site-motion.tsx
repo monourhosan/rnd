@@ -81,20 +81,22 @@ export function SiteMotion() {
       // A few pixels of image movement, without changing text or hit targets.
       const heroCleanups: (() => void)[] = [];
       if (window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
-        document.querySelectorAll<HTMLElement>(".image-hero").forEach(hero => {
+        document.querySelectorAll<HTMLElement>(".image-hero, .closing-background").forEach(hero => {
+          const closing = hero.matches(".closing-background");
+          const prefix = closing ? "--closing" : "--hero";
           let frame = 0;
           function move(event: PointerEvent) {
             cancelAnimationFrame(frame);
             frame = requestAnimationFrame(() => {
               const bounds = hero.getBoundingClientRect();
-              hero.style.setProperty("--hero-x", `${(event.clientX - bounds.left - bounds.width / 2) / bounds.width * 16}px`);
-              hero.style.setProperty("--hero-y", `${(event.clientY - bounds.top - bounds.height / 2) / bounds.height * 12}px`);
+              hero.style.setProperty(`${prefix}-x`, `${(event.clientX - bounds.left - bounds.width / 2) / bounds.width * (closing ? 28 : 16)}px`);
+              hero.style.setProperty(`${prefix}-y`, `${(event.clientY - bounds.top - bounds.height / 2) / bounds.height * (closing ? 20 : 12)}px`);
             });
           }
           function reset() {
             cancelAnimationFrame(frame);
-            hero.style.removeProperty("--hero-x");
-            hero.style.removeProperty("--hero-y");
+            hero.style.removeProperty(`${prefix}-x`);
+            hero.style.removeProperty(`${prefix}-y`);
           }
           hero.addEventListener("pointermove", move, { passive: true });
           hero.addEventListener("pointerleave", reset);
@@ -106,11 +108,32 @@ export function SiteMotion() {
         });
       }
 
+      const closings = Array.from(document.querySelectorAll<HTMLElement>(".closing-background"));
+      let scrollFrame = 0;
+      function updateClosingScroll() {
+        cancelAnimationFrame(scrollFrame);
+        scrollFrame = requestAnimationFrame(() => {
+          for (const closing of closings) {
+            const bounds = closing.getBoundingClientRect();
+            if (bounds.bottom < 0 || bounds.top > window.innerHeight) continue;
+            const progress = (window.innerHeight / 2 - bounds.top - bounds.height / 2) / ((window.innerHeight + bounds.height) / 2);
+            closing.style.setProperty("--closing-scroll", `${Math.max(-1, Math.min(1, progress)) * 20}px`);
+          }
+        });
+      }
+      window.addEventListener("scroll", updateClosingScroll, { passive: true });
+      window.addEventListener("resize", updateClosingScroll, { passive: true });
+      updateClosingScroll();
+
       teardown = () => {
         observer.disconnect();
         mutations.disconnect();
         document.removeEventListener("pointerdown", onPress);
         heroCleanups.forEach(cleanup => cleanup());
+        window.removeEventListener("scroll", updateClosingScroll);
+        window.removeEventListener("resize", updateClosingScroll);
+        cancelAnimationFrame(scrollFrame);
+        closings.forEach(closing => closing.style.removeProperty("--closing-scroll"));
         animations.forEach(animation => animation.cancel());
         animations.clear();
       };

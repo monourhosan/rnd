@@ -4,6 +4,7 @@ Accessed **14 November 2026**. The actual source pages below identify these scen
 
 | Local file in `public/images/` | Creator | Source page and location evidence | License |
 | --- | --- | --- | --- |
+| `bangladesh-fields-aerial.webp` | Zakaria Joy | [Aerial view of lush green fields and train in Bangladesh](https://www.pexels.com/photo/aerial-view-of-lush-green-fields-and-train-in-bangladesh-35092865/); page identifies Bangladesh; cropped to 1920 × 1080 for the closing background | Pexels License |
 | `dhaka-river-market.webp` | Faisal Ibne Kalam | [Boats docked along busy river market in Dhaka](https://www.pexels.com/photo/boats-docked-along-busy-river-market-in-dhaka-37115827/); page identifies Dhaka, Bangladesh | Pexels License |
 | `dhaka-street-market.webp` | Nazmul Hasan Nahid | [Street market scene in Dhaka, Bangladesh](https://www.pexels.com/photo/street-market-scene-in-dhaka-bangladesh-37020659/); page identifies Dhaka, Bangladesh | Pexels License |
 | `chandpur-landscape.webp` | Adil Ahnaf | [Serene rural landscape in Chandpur](https://www.pexels.com/photo/a-dirt-road-leading-to-a-rice-field-20035918/); page identifies Chandpur, Bangladesh | Pexels License |
