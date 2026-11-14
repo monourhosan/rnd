@@ -3,5 +3,21 @@ import { PageIntro, CallToAction, Arrow } from "@/components/editorial";
 import { services } from "@/content/services";
 import { photos } from "@/content/images";
 import { pageMetadata } from "@/lib/metadata";
-export const metadata = pageMetadata("What we do", "Explore social research, market research, evaluation, fieldwork, qualitative research, and insight communication for Bangladesh.", "/services");
-export default function Services() { return <><PageIntro image={photos.market} eyebrow="What we do" title="We design research around people’s experiences and the decisions your organization needs to make." text="Research designed around your decision, the people it affects, and the evidence that will make a difference." /><div className="container"><div className="services-layout section"><aside className="service-index"><p className="eyebrow">Explore our capabilities</p><nav aria-label="Service sections">{services.map((s, i) => <a key={s.id} href={`#${s.id}`}><span>0{i + 1}</span>{s.title}</a>)}</nav><p>Methods and deliverables are agreed for each study’s purpose and scope.</p></aside><div>{services.map((s, i) => <section className="service-detail" id={s.id} key={s.id}><span className="eyebrow">0{i + 1} / Research capability</span><h2>{s.title}</h2><p>{s.description}</p><blockquote><span className="eyebrow">A question we could explore</span>{s.question}</blockquote><div className="method-output"><div><h3>Possible methods</h3><ul>{s.methods.map(m => <li key={m}>{m}</li>)}</ul></div><div><h3>Potential outputs</h3><ul>{s.outputs.map(o => <li key={o}>{o}</li>)}</ul></div></div><Link className="text-link" href={`/contact?interest=${s.id}`}>Discuss this research area<Arrow /></Link></section>)}</div></div></div><CallToAction /></>; }
+export const metadata = pageMetadata("Services", "Social research, market research, evaluation, fieldwork, and analysis for Bangladesh.", "/services");
+export default function Services() {
+  return <>
+    <PageIntro image={photos.market} eyebrow="Services" title="Research shaped around your question." />
+    <div className="container services-layout section">
+      <aside className="service-index"><nav aria-label="Service sections">{services.map(s => <a key={s.id} href={"#" + s.id}>{s.title}</a>)}</nav></aside>
+      <div>{services.map(s => <section className="service-detail" id={s.id} key={s.id}>
+        <h2>{s.title}</h2><p>{s.description}</p>
+        <details className="content-details"><summary>Methods & outputs</summary><div className="method-output">
+          <div><h3>Possible methods</h3><ul>{s.methods.map(m => <li key={m}>{m}</li>)}</ul></div>
+          <div><h3>Potential outputs</h3><ul>{s.outputs.map(o => <li key={o}>{o}</li>)}</ul></div>
+        </div></details>
+        <Link className="text-link" href={"/contact?interest=" + s.id}>Enquire<Arrow /></Link>
+      </section>)}</div>
+    </div>
+    <CallToAction />
+  </>;
+}

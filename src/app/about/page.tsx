@@ -1,14 +1,32 @@
-import Image from "next/image";
 import { PageIntro, PhotoBlock, CallToAction, TextLink } from "@/components/editorial";
 import { photos } from "@/content/images";
 import { pageMetadata } from "@/lib/metadata";
-export const metadata = pageMetadata("About us", "Meet the purpose and principles behind Mirror Metrics, a Bangladesh-based social and market research organization.", "/about");
+export const metadata = pageMetadata("About us", "Bangladesh-based social and market research, guided by integrity, curiosity, and care.", "/about");
 const values = [
-  ["Integrity", "Be honest about what the evidence supports. Make assumptions, limitations, and uncertainty visible."],
-  ["Curiosity", "Ask the next question. Look for explanations that challenge the first interpretation."],
-  ["Respect", "Treat participation as a choice. Value people's time, privacy, and right to describe their own experience."],
-  ["Methodological rigor", "Choose a method because it fits the question. Document decisions so the reasoning can be examined."],
-  ["Clarity", "Make complex information understandable without stripping away the context that gives it meaning."],
-  ["Collaboration", "Build a shared understanding of the question and invite thoughtful discussion of what the evidence means."],
+  ["Integrity", "Be clear about evidence and its limits."],
+  ["Curiosity", "Question assumptions. Explore other explanations."],
+  ["Respect", "Value people’s choices, time, and privacy."],
+  ["Rigor", "Match the method to the question."],
+  ["Clarity", "Make findings understandable and useful."],
+  ["Collaboration", "Build understanding together."],
 ];
-export default function About() { return <><PageIntro image={photos.women} eyebrow="Who we are" title="Mirror Metrics brings a careful research lens to people, markets, programs, and the contexts that connect them." text="We believe good research brings people, context, and decisions into sharper focus." /><div className="container"><section className="split-text section"><p className="eyebrow">Our purpose</p><div><h2>Understanding first.<br /><em>Possibility follows.</em></h2><p className="lead">Mirror Metrics Research and Consultancy Ltd is a social and market research organization based in Bangladesh.</p><p>Our focus is on people, markets, programs, and the environments in which decisions are made. We bring a careful research lens to questions that rarely have a simple answer: how people experience a service, why consumers choose an offer, or where an initiative could better meet a community’s needs.</p><p>We see research as a conversation between a practical question and the reality it seeks to understand. The aim is to produce evidence that helps an organization think more clearly and choose its next step responsibly.</p></div></section></div><section className="values-section section"><div className="container"><p className="eyebrow">How we think</p><h2>Principles that shape<br /><em>the work.</em></h2><div className="values-grid">{values.map(([title, text], i) => <article key={title}><span className="eyebrow">0{i + 1}</span><h3>{title}</h3><p>{text}</p></article>)}</div></div></section><section className="container section context-feature"><PhotoBlock photo={photos.rural} /><div><p className="eyebrow">Why context matters</p><h2>Bangladesh is our context.<br /><em>People are our starting point.</em></h2><p>From urban markets to rural livelihoods, the questions worth asking are shaped by place. Language, seasonality, relationships, and access can all change what an answer means.</p><p>Thinking about research across Bangladesh means designing for those differences. We begin each scope by asking which settings, voices, and practical considerations the decision requires, rather than assuming one study can speak for everyone.</p><TextLink href="/approach">See how we approach research</TextLink></div></section><section className="brand-section container"><div><p className="eyebrow">Our identity</p><h2>A name that invites<br /><em>a closer look.</em></h2><p>Mirror Metrics Research and Consultancy Ltd</p><p>Reflecting real experience. Making evidence meaningful.</p></div><Image src="/brand/logo-complete.webp" width={650} height={570} alt="Original MIRROR Research & Consultancy logo with blue and teal eye symbols" /></section><CallToAction /></>; }
+export default function About() {
+  return <>
+    <PageIntro image={photos.women} eyebrow="About us" title="Understanding starts with people." />
+    <section className="container split-text section">
+      <h2>Who we are</h2>
+      <div><p className="lead">Mirror Metrics Research and Consultancy Ltd is a social and market research organization based in Bangladesh.</p>
+        <p>We explore how people experience communities, markets, and services, helping organizations make decisions grounded in local context.</p></div>
+    </section>
+    <section className="values-section section"><div className="container">
+      <h2>Our principles</h2>
+      <div className="values-grid">{values.map(([title, text]) => <article key={title}><h3>{title}</h3><p>{text}</p></article>)}</div>
+    </div></section>
+    <section className="container section context-feature"><PhotoBlock photo={photos.rural} /><div>
+      <h2>Rooted in Bangladesh</h2>
+      <p>Language, place, and everyday circumstances shape what an answer means. Our research design starts with those differences.</p>
+      <TextLink href="/approach">Our approach</TextLink>
+    </div></section>
+    <CallToAction />
+  </>;
+}

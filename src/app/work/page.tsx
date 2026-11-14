@@ -1,6 +1,19 @@
-import { PageIntro, PhotoBlock, CallToAction, TextLink } from "@/components/editorial";
+import { PageIntro, PhotoBlock, CallToAction } from "@/components/editorial";
 import { photos } from "@/content/images";
 import { applications } from "@/content/applications";
 import { pageMetadata } from "@/lib/metadata";
-export const metadata = pageMetadata("Illustrative research applications", "Explore hypothetical research questions and possible approaches. These examples are not completed Mirror Metrics client assignments.", "/work");
-export default function Work() { return <><PageIntro image={photos.boats} eyebrow="Research in practice / Illustrative applications" title="Explore how research could help organizations understand a question and choose a useful next step." text="The examples below illustrate how research can inform real decisions. They are not descriptions of completed Mirror Metrics client projects." /><section className="container applications-list">{applications.map((a, i) => <article id={a.id} className="application-detail" key={a.id}><PhotoBlock photo={a.image} priority={i === 0} /><div><p className="eyebrow">Illustrative scenario 0{i + 1} / {a.category}</p><h2>{a.title}</h2><dl><dt>Research question</dt><dd>{a.question}</dd><dt>Possible approach</dt><dd>{a.approach}</dd><dt>Decisions it could inform</dt><dd>{a.decision}</dd></dl><TextLink href="/contact">Discuss a similar question</TextLink></div></article>)}</section><CallToAction /></>; }
+export const metadata = pageMetadata("Research applications", "Illustrative research scenarios, not completed Mirror Metrics client projects.", "/work");
+export default function Work() {
+  return <>
+    <PageIntro image={photos.boats} eyebrow="Research applications" title="Questions worth exploring." text="Illustrative scenarios, not completed client projects." />
+    <section className="container applications-list">{applications.map((a, i) => <article id={a.id} className="application-detail" key={a.id}>
+      <PhotoBlock photo={a.image} priority={i === 0} /><div>
+        <p className="eyebrow">{a.category}</p><h2>{a.title}</h2><p>{a.question}</p>
+        <details className="content-details"><summary>Approach & potential use</summary><dl>
+          <dt>Approach</dt><dd>{a.approach}</dd><dt>Potential use</dt><dd>{a.decision}</dd>
+        </dl></details>
+      </div>
+    </article>)}</section>
+    <CallToAction />
+  </>;
+}

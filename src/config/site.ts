@@ -9,11 +9,11 @@ export const site = {
   socialLinks: [] as { label: string; url: string }[],
 };
 export const navigation = [
-  { label: "What we do", href: "/services" },
-  { label: "Who we are", href: "/about" },
-  { label: "Research applications", href: "/work" },
-  { label: "Latest insights", href: "/insights" },
-  { label: "Partner with us", href: "/contact" },
+  { label: "Services", href: "/services" },
+  { label: "About", href: "/about" },
+  { label: "Applications", href: "/work" },
+  { label: "Insights", href: "/insights" },
+  { label: "Contact", href: "/contact" },
 ];
 export const publicOrigin = (() => {
   try { const url = new URL(site.url); return url.protocol === "https:" && !/^(localhost|127\.)/.test(url.hostname) ? url.origin : undefined; }

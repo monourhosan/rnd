@@ -1,6 +1,14 @@
-import { PageIntro, PhotoBlock, CallToAction, TextLink } from "@/components/editorial";
+import { PageIntro, PhotoBlock, CallToAction } from "@/components/editorial";
 import { photos } from "@/content/images";
 import { sectors } from "@/content/sectors";
 import { pageMetadata } from "@/lib/metadata";
-export const metadata = pageMetadata("Research sectors", "Research questions across health, education, agriculture, inclusion, finance, climate, retail, and cities in Bangladesh.", "/sectors");
-export default function Sectors() { return <><PageIntro image={photos.rural} eyebrow="Sectors & contexts" title="Every research question sits within a wider world of people, markets, and public services." text="People’s lives cross sectors. Our research questions do too. These are areas of research interest and applicability, rather than a record of completed assignments." /><section className="container sector-detail-grid">{sectors.map((s, i) => <article id={s.id} className="sector-detail" key={s.id}><PhotoBlock photo={s.image} priority={i < 2} /><p className="eyebrow">0{i + 1} / Area of inquiry</p><h2>{s.title}</h2><p>{s.description}</p><div className="sector-question"><span className="eyebrow">A question worth asking</span><p>{s.question}</p></div><TextLink href="/contact">Explore a question with us</TextLink></article>)}</section><CallToAction /></>; }
+export const metadata = pageMetadata("Sectors", "Research interests across health, education, agriculture, inclusion, finance, climate, retail, and cities.", "/sectors");
+export default function Sectors() {
+  return <>
+    <PageIntro image={photos.rural} eyebrow="Sectors" title="Connected lives. Wider perspectives." text="Our research interests across communities and markets." />
+    <section className="container sector-detail-grid">{sectors.map((s, i) => <article id={s.id} className="sector-detail" key={s.id}>
+      <PhotoBlock photo={s.image} priority={i < 2} /><h2>{s.title}</h2><p>{s.description}</p>
+    </article>)}</section>
+    <CallToAction />
+  </>;
+}

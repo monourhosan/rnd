@@ -40,7 +40,6 @@ export function Header() {
     }}>
       <div className="menu-top"><span className="eyebrow">Explore Mirror Metrics</span><button onClick={closeMenu} aria-label="Close navigation menu">Close ×</button></div>
       <nav aria-label="Mobile navigation">{[...navigation, { label: "Our approach", href: "/approach" }, { label: "Sectors", href: "/sectors" }].map((n, i) => <Link key={n.href} href={n.href} onClick={closeMenu} aria-current={pathname === n.href ? "page" : undefined}><span className="menu-number">0{i + 1}</span>{n.label}<span aria-hidden="true">↗</span></Link>)}</nav>
-      <p>People. Context. Clearer decisions.</p>
     </dialog>
   </header>;
 }
