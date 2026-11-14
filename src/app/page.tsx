@@ -6,6 +6,7 @@ import { insights } from "@/content/insights";
 import { applications } from "@/content/applications";
 import { sectors } from "@/content/sectors";
 import { pageMetadata } from "@/lib/metadata";
+import { LatestNews } from "@/components/latest-news";
 
 export const metadata = pageMetadata("Research that reflects reality", "Thoughtful social and market research in Bangladesh. Understand people, communities, and markets through clear, actionable evidence.", "/");
 
@@ -24,6 +25,7 @@ export default function Home() {
         <p>Our proposed research offerings bring surveys, qualitative inquiry, evaluation, and analysis together. Each engagement starts by defining the question, choosing an appropriate method, and agreeing how the evidence will be used. <Link className="inline-link" href="/approach">Learn about our approach.</Link></p>
         <ResearchCycle />
       </section>
+      <LatestNews />
       <section className="home-section home-applications">
         <h2>Explore how research can inform decisions for people, communities, and markets</h2>
         <p className="illustrative-disclosure"><strong>Illustrative research applications.</strong> These scenarios show possible questions and approaches. They are not completed Mirror Metrics client assignments.</p>

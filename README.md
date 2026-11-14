@@ -55,6 +55,12 @@ Browsing and building need no API key. Without all three valid server delivery v
 
 ## Edit content
 
+### Homepage news
+
+The compact **In the news** section automatically reads the public economy/business RSS feeds from The Business Standard and The Daily Star, plus The Daily Star's environment feed. It displays up to three recent, relevant headlines with publisher attribution, dates, and original article links; it does not reproduce full articles or images. Feed URLs and relevance rules live in `src/lib/news.ts`.
+
+`/api/news` caches successful results using an hourly key in Next.js's Data Cache. The first request in each new hour fetches fresh feeds; open homepages check for updates every hour, retry failures after five minutes, and refresh when returning to a tab if due. This is request-driven, so idle sites do not need a background cron job or an API key. The host must run Next.js with outbound HTTPS access (a static export is insufficient). Failed feeds are isolated; if all feeds fail or contain no relevant stories from the last 14 days, the section shows an availability message. An open page retains its previous headlines with a delay notice if a refresh fails.
+
 See [CONTENT_EDITING.md](docs/CONTENT_EDITING.md). Configuration lives in `src/config/site.ts`; services, sectors, applications, images and articles each have a file under `src/content/`. Photo sources and limitations are documented in [IMAGE_CREDITS.md](docs/IMAGE_CREDITS.md).
 
 ## GitHub and Vercel
