@@ -134,10 +134,10 @@
   .field-motion-info p{font-size:13px;margin-bottom:18px}
 }
 
-/* Bengali Language Nav Link */
-.bn-lang-link{display:inline-flex;align-items:center;padding:4px 10px;border:1px solid var(--line);border-radius:3px;font-size:11px!important;letter-spacing:.02em!important;color:var(--navy)!important;margin-left:6px;transition:all 180ms ease}
-.bn-lang-link:hover{background:var(--mist);border-color:var(--teal);color:var(--deep-teal)!important}
-.bn-lang-link[aria-current]{background:var(--navy);color:white!important;border-color:var(--navy)}
+/* Header 'Our Work' Blue Button */
+.header-work-btn, .bn-lang-link{display:inline-flex;align-items:center;padding:8px 18px;background:#1b5693;border:1px solid #1b5693;border-radius:4px;font-size:11px!important;font-weight:700!important;letter-spacing:.08em!important;text-transform:uppercase;color:white!important;margin-left:8px;transition:all 180ms ease;box-shadow:0 2px 8px rgb(27 86 147 / 28%)}
+.header-work-btn:hover, .bn-lang-link:hover{background:#134170;border-color:#134170;color:white!important;box-shadow:0 4px 14px rgb(27 86 147 / 38%);transform:translateY(-1px)}
+.header-work-btn[aria-current], .bn-lang-link[aria-current]{background:var(--navy);border-color:var(--navy);color:white!important}
 
 /* Bengali Methodology & Perspectives Page */
 .bn-hero h1{font-size:clamp(34px,4.5vw,56px);letter-spacing:-.02em}

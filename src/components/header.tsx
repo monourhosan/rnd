@@ -27,7 +27,7 @@ export function Header() {
         <Image src="/brand/eye-mark.webp" width={72} height={43} alt="" priority />
         <span><strong>Mirror Metrics<span className="brand-dot">.</span></strong><small>RESEARCH & CONSULTANCY</small></span>
       </Link>
-      <nav aria-label="Main navigation" className="desktop-nav">{navigation.map(n => <Link key={n.href} href={n.href} aria-current={pathname === n.href ? "page" : undefined}>{n.label}</Link>)}<Link href="/kajer-dhara" className="bn-lang-link" aria-current={pathname === "/kajer-dhara" ? "page" : undefined}>বাংলা</Link></nav>
+      <nav aria-label="Main navigation" className="desktop-nav">{navigation.map(n => <Link key={n.href} href={n.href} aria-current={pathname === n.href ? "page" : undefined}>{n.label}</Link>)}<Link href="/kajer-dhara" className="header-work-btn" aria-current={pathname === "/kajer-dhara" ? "page" : undefined}>Our Work</Link></nav>
       <button ref={trigger} className="menu-button" aria-haspopup="dialog" aria-controls="mobile-menu" aria-expanded="false" onClick={() => { dialog.current?.showModal(); document.body.style.overflow = "hidden"; trigger.current?.setAttribute("aria-expanded", "true"); }}>Menu <span aria-hidden="true">☰</span></button>
     </div>
     <dialog id="mobile-menu" ref={dialog} className="mobile-dialog" aria-label="Navigation menu" onClose={closeMenu} onCancel={event => { event.preventDefault(); closeMenu(); }} onKeyDown={event => {
@@ -39,7 +39,7 @@ export function Header() {
       else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first?.focus(); }
     }}>
       <div className="menu-top"><span className="eyebrow">Explore Mirror Metrics</span><button onClick={closeMenu} aria-label="Close navigation menu">Close ×</button></div>
-      <nav aria-label="Mobile navigation">{[...navigation, { label: "Our approach", href: "/approach" }, { label: "Sectors", href: "/sectors" }, { label: "কাজের ধারা (বাংলা)", href: "/kajer-dhara" }].map((n, i) => <Link key={n.href} href={n.href} onClick={closeMenu} aria-current={pathname === n.href ? "page" : undefined}><span className="menu-number">0{i + 1}</span>{n.label}<span aria-hidden="true">↗</span></Link>)}</nav>
+      <nav aria-label="Mobile navigation">{[...navigation, { label: "Our approach", href: "/approach" }, { label: "Sectors", href: "/sectors" }, { label: "Our Work", href: "/kajer-dhara" }].map((n, i) => <Link key={n.href} href={n.href} onClick={closeMenu} aria-current={pathname === n.href ? "page" : undefined}><span className="menu-number">0{i + 1}</span>{n.label}<span aria-hidden="true">↗</span></Link>)}</nav>
     </dialog>
   </header>;
 }
