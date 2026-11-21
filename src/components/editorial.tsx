@@ -3,12 +3,13 @@ import Link from "next/link";
 import type { Photo } from "@/content/images";
 import { insights, readingTime } from "@/content/insights";
 import { photos } from "@/content/images";
+import { HeroMotionPhoto } from "@/components/field-motion";
 
 export function Arrow({ diagonal = false }: { diagonal?: boolean }) { return <span className="arrow" aria-hidden="true">{diagonal ? "↗" : "↗"}</span>; }
 export function TextLink({ href, children, light = false }: { href: string; children: React.ReactNode; light?: boolean }) { return <Link href={href} className={`text-link${light ? " light" : ""}`}>{children}<Arrow /></Link>; }
 export function PhotoBlock({ photo, className = "", priority = false, sizes = "(max-width: 767px) 100vw, 50vw" }: { photo: Photo; className?: string; priority?: boolean; sizes?: string }) { return <div className={`photo ${className}`}><Image src={photo.src} alt={photo.alt} fill sizes={sizes} priority={priority} /></div>; }
 export function ImageHero({ title, photo, eyebrow, description, home = false }: { title: React.ReactNode; photo: Photo; eyebrow?: string; description?: string; home?: boolean }) {
-  return <section className={`image-hero${home ? " home-image-hero" : ""}`}><PhotoBlock photo={photo} priority sizes="100vw" /><div className="image-hero-content">{eyebrow && <p className="eyebrow">{eyebrow}</p>}<h1>{title}</h1>{description && <p className="hero-description">{description}</p>}{home && <TextLink href="/services">Explore our services</TextLink>}</div></section>;
+  return <section className={`image-hero${home ? " home-image-hero" : ""}`}>{home ? <HeroMotionPhoto /> : <PhotoBlock photo={photo} priority sizes="100vw" />}<div className="image-hero-content">{eyebrow && <p className="eyebrow">{eyebrow}</p>}<h1>{title}</h1>{description && <p className="hero-description">{description}</p>}{home && <TextLink href="/services">Explore our services</TextLink>}</div></section>;
 }
 export function PageIntro({ eyebrow, title, text, image }: { eyebrow?: string; title: React.ReactNode; text?: string; image?: Photo }) { return image ? <><ImageHero title={title} photo={image} eyebrow={eyebrow} />{text && <div className="intro-summary container"><p>{text}</p></div>}</> : <section className="page-intro container">{eyebrow && <div className="eyebrow"><span className="tiny-square" />{eyebrow}</div>}<h1>{title}</h1>{text && <p>{text}</p>}</section>; }
 export function SectionHeading({ eyebrow, title, text, href, link }: { eyebrow: string; title: React.ReactNode; text?: string; href?: string; link?: string }) { return <div className="section-heading"><div><p className="eyebrow">{eyebrow}</p><h2>{title}</h2>{text && <p className="section-description">{text}</p>}</div>{href && <TextLink href={href}>{link}</TextLink>}</div>; }

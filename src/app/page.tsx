@@ -6,6 +6,7 @@ import { insights } from "@/content/insights";
 import { applications } from "@/content/applications";
 import { pageMetadata } from "@/lib/metadata";
 import { LatestNews } from "@/components/latest-news";
+import { FieldMotionShowcase } from "@/components/field-motion";
 
 export const metadata = pageMetadata("Research that reflects reality", "Thoughtful social and market research in Bangladesh. Understand people, communities, and markets through clear, actionable evidence.", "/");
 
@@ -18,6 +19,7 @@ export default function Home() {
         <TextLink href="/about">About us</TextLink>
       </section>
       <LatestNews />
+      <FieldMotionShowcase />
       <section className="home-section home-applications">
         <h2>Research in practice</h2>
         <p className="illustrative-disclosure">Illustrative scenarios, not completed client projects.</p>

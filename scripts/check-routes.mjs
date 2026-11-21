@@ -26,7 +26,7 @@ for (const route of ["/about", "/services", "/sectors", "/approach", "/work", "/
 assert.equal([...visited.keys()].filter(path => path.startsWith("/insights/")).length, 4);
 const missing = await fetch(`${base}/this-page-does-not-exist`);
 assert.equal(missing.status, 404);
-assert.ok((await missing.text()).includes("out of the picture"));
+assert.ok((await missing.text()).includes("Page not found"));
 for (const asset of ["/icon.png", "/apple-icon.png", "/opengraph-image.png", "/brand/eye-mark.webp", "/brand/logo-original.jpg", "/images/dhaka-river-market.webp", "/images/dhaka-street-market.webp", "/images/chandpur-landscape.webp", "/images/bangladesh-rice-fields.webp", "/images/bangladesh-kans-grass.webp", "/images/dhaka-market-street.webp", "/images/dhaka-fruit-market.webp", "/images/bangladesh-harvest.webp", "/sitemap.xml", "/robots.txt"]) assert.equal((await fetch(`${base}${asset}`)).status, 200, asset);
 const unconfigured = await fetch(`${base}/api/contact`, { method: "POST", headers: { Origin: base, "Content-Type": "application/json" }, body: "{}" });
 assert.equal(unconfigured.status, 503, "This check is intended for an unconfigured local server");
