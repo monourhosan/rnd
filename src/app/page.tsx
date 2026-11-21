@@ -18,7 +18,6 @@ export default function Home() {
         <div><h2>People. Context. Evidence.</h2><p>We help organizations understand communities and markets, and turn evidence into clearer decisions.</p></div>
         <TextLink href="/about">About us</TextLink>
       </section>
-      <LatestNews />
       <FieldMotionShowcase />
       <section className="home-section home-applications">
         <h2>Research in practice</h2>
@@ -35,6 +34,7 @@ export default function Home() {
         <div className="insight-grid">{insights.slice(0, 3).map(a => <InsightCard article={a} key={a.slug} />)}</div>
         <TextLink href="/insights">All perspectives</TextLink>
       </section>
+      <LatestNews />
     </div>
     <CallToAction />
   </>;
