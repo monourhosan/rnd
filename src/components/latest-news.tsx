@@ -52,7 +52,6 @@ export function LatestNews() {
   return <section className="home-section home-news" aria-labelledby="news-heading">
     <div className="news-heading">
       <h2 id="news-heading">In the news</h2>
-      <span className="news-cadence"><span aria-hidden="true" />Updated hourly</span>
     </div>
     <div aria-live="polite" aria-atomic="true" aria-busy={!digest && !unavailable}>
       {digest ? <ol className="news-list">{digest.articles.map(article => <li key={article.url}>

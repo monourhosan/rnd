@@ -5,26 +5,19 @@ import Image from "next/image";
 import { motionScenes, heroMotion, type MotionScene } from "@/content/images";
 
 export function HeroMotionPhoto() {
-  const [isPlaying, setIsPlaying] = useState(true);
   const [reducedMotion, setReducedMotion] = useState(false);
 
   useEffect(() => {
     const media = window.matchMedia("(prefers-reduced-motion: reduce)");
-    if (media.matches) {
-      setReducedMotion(true);
-      setIsPlaying(false);
-    }
-    const listener = (e: MediaQueryListEvent) => {
-      setReducedMotion(e.matches);
-      if (e.matches) setIsPlaying(false);
-    };
+    setReducedMotion(media.matches);
+    const listener = (e: MediaQueryListEvent) => setReducedMotion(e.matches);
     media.addEventListener("change", listener);
     return () => media.removeEventListener("change", listener);
   }, []);
 
   return (
     <div className="hero-motion-container" aria-hidden="true">
-      {isPlaying && !reducedMotion ? (
+      {!reducedMotion ? (
         <picture>
           <source srcSet={heroMotion.src} type="image/webp" />
           <source srcSet={heroMotion.gif} type="image/gif" />
@@ -46,32 +39,20 @@ export function HeroMotionPhoto() {
           className="hero-motion-media"
         />
       )}
-      <button
-        type="button"
-        className="hero-motion-control"
-        onClick={() => setIsPlaying(p => !p)}
-        aria-label={isPlaying ? "Pause ambient river motion" : "Play ambient river motion"}
-        title={isPlaying ? "Pause live motion" : "Play live motion"}
-      >
-        <span className={`hero-motion-dot ${isPlaying ? "" : "paused"}`} />
-        <span>{isPlaying ? "Live Field View" : "Motion Paused"}</span>
-        <span className="hero-motion-icon">{isPlaying ? "❚❚" : "▶"}</span>
-      </button>
     </div>
   );
 }
 
 export function FieldMotionShowcase() {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [isMediaPlaying, setIsMediaPlaying] = useState(true);
   const [prefersReduced, setPrefersReduced] = useState(false);
 
   useEffect(() => {
     const media = window.matchMedia("(prefers-reduced-motion: reduce)");
-    if (media.matches) {
-      setPrefersReduced(true);
-      setIsMediaPlaying(false);
-    }
+    setPrefersReduced(media.matches);
+    const listener = (e: MediaQueryListEvent) => setPrefersReduced(e.matches);
+    media.addEventListener("change", listener);
+    return () => media.removeEventListener("change", listener);
   }, []);
 
   const activeScene: MotionScene = motionScenes[currentIndex];
@@ -125,7 +106,7 @@ export function FieldMotionShowcase() {
         aria-labelledby={`tab-${activeScene.id}`}
       >
         <div className="field-motion-media-wrapper">
-          {isMediaPlaying && !prefersReduced ? (
+          {!prefersReduced ? (
             <picture>
               <source srcSet={activeScene.srcWebp} type="image/webp" />
               <source srcSet={activeScene.srcGif} type="image/gif" />
@@ -145,20 +126,6 @@ export function FieldMotionShowcase() {
               style={{ objectFit: "cover" }}
             />
           )}
-
-          <div className="field-motion-badge">
-            <span className="field-motion-badge-dot" />
-            <span>Observation {activeScene.number}</span>
-          </div>
-
-          <button
-            type="button"
-            className="field-motion-media-btn"
-            onClick={() => setIsMediaPlaying(p => !p)}
-            aria-label={isMediaPlaying ? "Pause scene animation" : "Resume scene animation"}
-          >
-            <span>{isMediaPlaying ? "❚❚ Pause" : "▶ Play"}</span>
-          </button>
         </div>
 
         <div className="field-motion-info">
