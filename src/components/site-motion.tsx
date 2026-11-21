@@ -9,6 +9,7 @@ const revealSelector = [
   ".insight-grid > article", ".people-grid > article", ".news-list > li",
   ".values-grid > article", ".process > li", ".service-detail", ".sector-detail",
   ".application-detail", ".article-body > section", ".closing", ".section-heading",
+  ".bn-point-card", ".bn-intro-card", ".bn-closing-nav", ".bn-article-hero",
 ].join(",");
 
 export function SiteMotion() {
